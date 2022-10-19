@@ -1,18 +1,41 @@
-<div class="floating-box">
+<?php
+    if( array_key_exists('Fname', $_POST) && $_POST['Fname']  && array_key_exists('Lname', $_POST) && $_POST['Lname'] && array_key_exists('message', $_POST) && $_POST['message'] ) {
+        // Security way
+        $sql = $mysqli->prepare("INSERT INTO messages (Fname, Lname, Message) VALUES (?,?,?)");
+        $sql -> bind_param('sss', $_POST['Fname'], $_POST['Lname'], $_POST['message']);
+        $sql -> execute();
+
+        // Old way
+        // $sql = "INSERT INTO messages (Fname, Lname, Message) VALUES ('". $_POST['Fname']."' , '". $_POST['Lname']."' , '". $_POST['message']."' )" ;
+        // $result = $mysqli->query($sql);
+    
+        if ($mysqli->errno) {
+            printf("Could not insert record into table: %s<br />", $mysqli->error);
+        }
+
+        ?>
+        <p>Thanks for Submitting </p>
+        <?php
+    } else { ?>
+
+        <form action="/" method="POST">
+
+            <label>
+                First Name: <input name='Fname'>
+            </label>
+            <label>
+                Last Name: <input name='Lname'>
+            </label>
+            <label>
+                Message: <input name='message'>
+            </label>
+
+            <button>Submit</button>
+
+        </form>
+
+    <?php
+    }
+?>
 
 
-
-	<img class="logo" src="dist/img/logo.png" alt="Circus Logo" />
-        <div class="foreground">
-            <h1>Hello World!</h1>
-            <p>Yep, you've got the Circus Starter project working.</p>
-            <p>Congratulations! You're ready to code.</p>
-            <p class="github">
-                <a target="_blank" rel="noopener" href="https://github.com/CreativeCircus/circus-starter"
-                    >https://github.com/CreativeCircus/circus-starter</a
-                >
-            </p>
-            <code>1.10.0</code>
-        </div>
-    <div class="background"></div>
-</div>
