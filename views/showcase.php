@@ -1,8 +1,6 @@
-<?php 
-    include 'views/partials/header.php'; 
-    $sql = "SELECT id, src FROM gallery";
+<?php
+    $sql = "SELECT * FROM gallery WHERE id = " . $id = $_GET['id'];
     $result = $mysqli->query($sql);
-    $id = $_GET['id'];
 ?>
 
 
@@ -12,9 +10,9 @@
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
         ?> 
-            <h2><?php echo $row[$id]['name'];?></h2>
+            <h2><?php echo $row['name'];?></h2>
 
-            <img src="<?php echo $row[$id]['src'];?>">
+            <img class="image" src="<?php echo $row['src'];?>">
         <?php             
         }
         } else {

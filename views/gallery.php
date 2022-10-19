@@ -4,7 +4,9 @@
         //  $sql = "SELECT id, src, thumbnail, name FROM gallery"; //select all the columns from gallery database
 		 
          $result = $mysqli->query($sql);
-           
+      ?>
+      <ul class="gallery-row">
+         <?php
          if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
             //    printf(
@@ -14,10 +16,11 @@
             //     //   $row["thumbnail"],
             //     //   $row["name"]); 
             ?> 
-               <li class="gallery-row">
-                  <a href="?page=showcase?id=<?php echo $row['id'];?>">
+               <li>
+                  <a href="/?page=showcase&id=<?php echo $row['id'];?>">
                      <img src="<?php echo $row["thumbnail"];?>">
                   </a>
+                     <p><?php echo $row['name']?></p>
                </li>
             <?php             
             }
@@ -26,4 +29,5 @@
          }
          mysqli_free_result($result);
          $mysqli->close();
-?>
+         ?>
+   </ul>

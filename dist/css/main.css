@@ -235,4 +235,17 @@ body {
   font-size: 0.8em;
   opacity: 0.2;
 }
+
+.gallery-row {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery-row li {
+  margin: 20px;
+}
+
+.image {
+  width: 80%;
+}
 /*# sourceMappingURL=main.css.map */

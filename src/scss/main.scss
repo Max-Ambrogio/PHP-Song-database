@@ -116,7 +116,14 @@ body {
 	}
 }
 
-
 .gallery-row{
 	text-decoration: none;
+	display: flex;
+	flex-wrap: wrap;
+	li{
+		margin: 20px;
+	}
+}
+.image{
+	width: 80%;
 }
