@@ -9,4 +9,5 @@
 
 		<link rel="stylesheet" href="dist/css/main.css" />
 	</head>
+	<h1>Online Song DataBase</h1>
 <body>

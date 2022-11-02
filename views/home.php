@@ -1,8 +1,8 @@
 <?php
-    if( array_key_exists('Fname', $_POST) && $_POST['Fname']  && array_key_exists('Lname', $_POST) && $_POST['Lname'] && array_key_exists('message', $_POST) && $_POST['message'] ) {
+    if( array_key_exists('Url', $_POST) && $_POST['Url']  && array_key_exists('SongName', $_POST) && $_POST['SongName'] && array_key_exists('Genre', $_POST) && $_POST['Genre'] && array_key_exists('Artist', $_POST) && $_POST['Artist'] ) {
         // Security way
-        $sql = $mysqli->prepare("INSERT INTO messages (Fname, Lname, Message) VALUES (?,?,?)");
-        $sql -> bind_param('sss', $_POST['Fname'], $_POST['Lname'], $_POST['message']);
+        $sql = $mysqli->prepare("INSERT INTO songdatabase (Url, SongName, Genre, Artist) VALUES (?,?,?,?)");
+        $sql -> bind_param('ssss', $_POST['Url'], $_POST['SongName'], $_POST['Genre'], $_POST['Artist']);
         $sql -> execute();
 
         // Old way
@@ -14,28 +14,34 @@
         }
 
         ?>
-        <p>Thanks for Submitting </p>
+
         <?php
-    } else { ?>
+    } ?>
 
-        <form action="/" method="POST">
+
+        <form class="input" action="/" method="POST">
 
             <label>
-                First Name: <input name='Fname'>
+                Song Url: <input name='Url'>
             </label>
             <label>
-                Last Name: <input name='Lname'>
+                Song name: <input name='SongName'>
             </label>
             <label>
-                Message: <input name='message'>
+                Artist: <input name='Artist'>
+            </label>
+            <label>
+                Genre: <input name='Genre'>
             </label>
 
             <button>Submit</button>
+            
 
         </form>
-
     <?php
-    }
+    
 ?>
+
+<?php include 'views/showcase.php';?>
 
 
